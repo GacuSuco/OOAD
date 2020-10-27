@@ -42,6 +42,4 @@ public class QuebbleFacadeController {
         int score = this.quiz.calculateScore();
         System.out.println("De quiz is gespeeld. Score:" + score);
     }
-
-
 }

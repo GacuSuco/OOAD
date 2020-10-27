@@ -1,6 +1,9 @@
 package OOAD.Quebble.DAO;
 
-import OOAD.Quebble.Question.*;
+import OOAD.Quebble.Question.MultipleChoiceQuestion;
+import OOAD.Quebble.Question.Question;
+import OOAD.Quebble.Question.QuestionAnswer;
+import OOAD.Quebble.Question.ShortAnswerQuestion;
 import OOAD.Quebble.Quiz;
 
 import java.util.ArrayList;
