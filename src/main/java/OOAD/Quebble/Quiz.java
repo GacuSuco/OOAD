@@ -2,13 +2,12 @@ package OOAD.Quebble;
 
 import OOAD.Quebble.Checkword.Checkword;
 import OOAD.Quebble.Question.Question;
-import OOAD.Quebble.ScoreCalculator.DefaultScoreCalculator;
-import OOAD.Quebble.ScoreCalculator.IScoreCalculator;
+import OOAD.Quebble.ScoreCalculator.ScoreCalculatorContext;
 
 import java.util.ArrayList;
 
 public class Quiz {
-    private IScoreCalculator ScoreCalculator;
+    private ScoreCalculatorContext ScoreCalculatorContext;
     private Checkword checkword;
     private ArrayList<Question> questions;
     private ArrayList<GivenAnswer> givenAnswers;
@@ -20,30 +19,33 @@ public class Quiz {
 
     private long timestamp;
 
-    public Quiz (int quizId, int quizPrice, ArrayList<Question> questions){
+    public Quiz(int quizId, int quizPrice, ArrayList<Question> questions) {
         this.quizId = quizId;
         this.quizPrice = quizPrice;
         this.questions = questions;
     }
 
-    public void setupQuiz(){
+    public void setupQuiz() {
         this.questionIndex = 0;
         this.totalCorrectlyAnswered = 0;
         this.givenAnswers = new ArrayList<GivenAnswer>();
-        this.checkword = new Checkword();
 
         this.timestamp = System.currentTimeMillis();
     }
+
     public int getQuizPrice() {
         return quizPrice;
     }
-    public Question getQuestion(int index){
+
+    public Question getQuestion(int index) {
         return questions.get(index);
     }
-    public Question getNextQuestion(){
+
+    public Question getNextQuestion() {
         return getQuestion(questionIndex);
     }
-    public void answerQuestion(String answer){
+
+    public void answerQuestion(String answer) {
         Question question = this.getQuestion(this.questionIndex);
         givenAnswers.add(new GivenAnswer(question, answer));
         this.questionIndex++;
@@ -54,9 +56,10 @@ public class Quiz {
     }
 
     public ArrayList<Character> startCheckword() {
+        this.checkword = new Checkword();
         for (int i = 0; i < givenAnswers.size(); i++) {
             boolean isCorrectly = givenAnswers.get(i).isCorrectlyAnswered();
-            if (isCorrectly){
+            if (isCorrectly) {
                 char letter = questions.get(i).getRewardLetter();
                 checkword.addEarnedLetter(letter);
                 totalCorrectlyAnswered++;
@@ -64,13 +67,14 @@ public class Quiz {
         }
         return checkword.getEarnedLetters();
     }
-    public void answerCheckword(String answer){
+
+    public void answerCheckword(String answer) {
         this.timestamp = System.currentTimeMillis() - timestamp;
         this.checkword.validateCheckword(answer);
     }
-    public int calculateScore(){
-        this.ScoreCalculator = new DefaultScoreCalculator();
 
-        return this.ScoreCalculator.calculateScore(this.totalCorrectlyAnswered, this.timestamp, this.checkword.getGivenCheckword());
+    public int calculateScore() {
+
+        return this.ScoreCalculatorContext.getScoreCalculator().calculateScore(this.totalCorrectlyAnswered, this.timestamp, this.checkword.getGivenCheckword());
     }
 }

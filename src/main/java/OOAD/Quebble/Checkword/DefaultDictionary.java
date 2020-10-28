@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class DefaultDictionary implements IDictionary {
     private ArrayList<String> dictionary;
 
-    public DefaultDictionary () {
+    public DefaultDictionary() {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource("wordlist.txt");
         this.dictionary = new ArrayList<String>();
@@ -18,14 +18,14 @@ public class DefaultDictionary implements IDictionary {
         Scanner scanner = null;
         try {
             if (resource != null) {
-                scanner = new Scanner(new File(resource.toURI()),"UTF-8");
+                scanner = new Scanner(new File(resource.toURI()), "UTF-8");
             }
         } catch (FileNotFoundException | URISyntaxException e) {
             e.printStackTrace();
         }
 
         if (scanner != null) {
-            while (scanner.hasNext()){
+            while (scanner.hasNext()) {
                 dictionary.add(scanner.next());
             }
             scanner.close();

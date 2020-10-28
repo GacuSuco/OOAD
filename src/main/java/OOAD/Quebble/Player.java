@@ -5,10 +5,11 @@ public class Player {
     public String username;
     public int credit;
 
-    private Player (){ }
+    private Player() {
+    }
 
     public static Player getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new Player();
         }
         return instance;
@@ -17,14 +18,16 @@ public class Player {
     public String getUsername() {
         return username;
     }
-    public boolean substractBalance(int givenBalance){
-        if (credit > givenBalance){
+
+    public boolean substractBalance(int givenBalance) {
+        if (credit > givenBalance) {
             this.credit -= givenBalance;
             return true;
         }
         return false;
     }
-    public void login(String username, String password){
+
+    public void login(String username, String password) {
         this.username = username;
         this.credit = 1000;
     }

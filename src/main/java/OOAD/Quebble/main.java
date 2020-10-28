@@ -11,7 +11,7 @@ public class main {
 
         QuebbleFacadeController QFC = new QuebbleFacadeController();
         QFC.startQuiz();
-        while (QFC.hasMoreQuestions()){
+        while (QFC.hasMoreQuestions()) {
             QFC.getNextQuestion();
             QFC.answerQuestion(reader.readLine());
         }

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class ShortAnswerQuestion extends Question {
     private ArrayList<String> answers;
 
-    public ShortAnswerQuestion(String question,char rewardLetter, ArrayList<String> answers) {
-        super(question,rewardLetter);
+    public ShortAnswerQuestion(String question, char rewardLetter, ArrayList<String> answers) {
+        super(question, rewardLetter);
         this.answers = answers;
     }
 
