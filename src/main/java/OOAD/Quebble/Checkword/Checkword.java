@@ -10,6 +10,7 @@ public class Checkword {
     public Checkword() {
         this.givenCheckword = "";
         this.earnedLetters = new ArrayList<>();
+        this.dictionaryContext = new DictionaryContext(new DefaultDictionary());
     }
 
     public void addEarnedLetter(char letter) {

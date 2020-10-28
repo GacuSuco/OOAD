@@ -2,6 +2,7 @@ package OOAD.Quebble;
 
 import OOAD.Quebble.Checkword.Checkword;
 import OOAD.Quebble.Question.Question;
+import OOAD.Quebble.ScoreCalculator.DefaultScoreCalculator;
 import OOAD.Quebble.ScoreCalculator.ScoreCalculatorContext;
 
 import java.util.ArrayList;
@@ -16,13 +17,14 @@ public class Quiz {
     private int quizPrice;
     private int questionIndex;
     private int totalCorrectlyAnswered;
-
     private long timestamp;
 
     public Quiz(int quizId, int quizPrice, ArrayList<Question> questions) {
         this.quizId = quizId;
         this.quizPrice = quizPrice;
         this.questions = questions;
+
+        this.ScoreCalculatorContext = new ScoreCalculatorContext(new DefaultScoreCalculator());
     }
 
     public void setupQuiz() {
@@ -74,7 +76,6 @@ public class Quiz {
     }
 
     public int calculateScore() {
-
         return this.ScoreCalculatorContext.getScoreCalculator().calculateScore(this.totalCorrectlyAnswered, this.timestamp, this.checkword.getGivenCheckword());
     }
 }
