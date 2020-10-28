@@ -73,7 +73,7 @@ public class QuizDao {
         return new Quiz(1337,40,questions);
     }
 
-    public void UpdatePlayedQuizzes(Quiz playedQuiz){
-
+    public void UpdatePlayedQuizzes(String username, Quiz playedQuiz){
+        //TODO: Update naar db dat quiz gespeeld is.
     }
 }

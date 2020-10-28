@@ -6,13 +6,14 @@ import OOAD.Quebble.Question.Question;
 import java.util.ArrayList;
 
 public class QuebbleFacadeController {
+    private QuizDao quizDao = new QuizDao();
     private Quiz quiz;
 
     public void startQuiz(){
         System.out.println("De quiz begint!");
 
         String username = Player.getInstance().getUsername();
-        this.quiz = new QuizDao().getLeastPlayedQuizFromPLayer(username);
+        this.quiz = quizDao.getLeastPlayedQuizFromPLayer(username);
 
         int quizprice = this.quiz.getQuizPrice();
 
@@ -41,5 +42,9 @@ public class QuebbleFacadeController {
     public void endQuiz(){
         int score = this.quiz.calculateScore();
         System.out.println("De quiz is gespeeld. Score:" + score);
+
+        String username = Player.getInstance().getUsername();
+        quizDao.UpdatePlayedQuizzes(username, quiz);
+
     }
 }
