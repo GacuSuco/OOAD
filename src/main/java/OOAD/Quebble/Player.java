@@ -19,12 +19,12 @@ public class Player {
         return username;
     }
 
-    public boolean substractBalance(int givenBalance) {
-        if (credit > givenBalance) {
-            this.credit -= givenBalance;
-            return true;
-        }
-        return false;
+    public boolean hasSufficientBalance(int givenBalance){
+        return credit > givenBalance;
+    }
+
+    public void substractBalance(int givenBalance) {
+        this.credit -= givenBalance;
     }
 
     public void login(String username, String password) {

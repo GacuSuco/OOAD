@@ -17,7 +17,8 @@ public class QuebbleFacadeController {
 
         int quizprice = this.quiz.getQuizPrice();
 
-        if (Player.getInstance().substractBalance(quizprice)) {
+        if (Player.getInstance().hasSufficientBalance(quizprice)) {
+            Player.getInstance().substractBalance(quizprice);
             this.quiz.setupQuiz();
         }
     }
