@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class QuizDao {
+public class QuizDao implements IQuizDao {
     public Quiz getLeastPlayedQuizFromPLayer(String username) {
         HashMap<String, QuestionAnswer> qa;
         ArrayList<Question> questions = new ArrayList<>();

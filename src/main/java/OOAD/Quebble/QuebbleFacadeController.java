@@ -1,12 +1,13 @@
 package OOAD.Quebble;
 
+import OOAD.Quebble.DAO.IQuizDao;
 import OOAD.Quebble.DAO.QuizDao;
 import OOAD.Quebble.Question.Question;
 
 import java.util.ArrayList;
 
 public class QuebbleFacadeController {
-    private QuizDao quizDao = new QuizDao();
+    private IQuizDao quizDao = new QuizDao();
     private Quiz quiz;
 
     public void startQuiz() {
