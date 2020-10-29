@@ -39,22 +39,26 @@ public class Quiz {
         return quizPrice;
     }
 
+    public int getQuestionIndex() {
+        return questionIndex;
+    }
+
     public Question getQuestion(int index) {
         return questions.get(index);
     }
 
-    public Question getNextQuestion() {
-        return getQuestion(questionIndex);
+    public Question getCurrentQuestion() {
+        return getQuestion(this.getQuestionIndex());
     }
 
     public void answerQuestion(String answer) {
-        Question question = this.getQuestion(this.questionIndex);
+        Question question = this.getCurrentQuestion();
         givenAnswers.add(new GivenAnswer(question, answer));
         this.questionIndex++;
     }
 
     public boolean hasMoreQuestions() {
-        return this.questionIndex < this.questions.size();
+        return this.getQuestionIndex() < this.questions.size();
     }
 
     public ArrayList<Character> startCheckword() {

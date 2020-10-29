@@ -28,8 +28,8 @@ public class QuebbleFacadeController {
         return this.quiz.hasMoreQuestions();
     }
 
-    public void getNextQuestion() {
-        Question q = this.quiz.getNextQuestion();
+    public void getCurrentQuestion() {
+        Question q = this.quiz.getCurrentQuestion();
         System.out.println(q.toString());
     }
 

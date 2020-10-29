@@ -12,7 +12,7 @@ public class main {
         QuebbleFacadeController QFC = new QuebbleFacadeController();
         QFC.startQuiz();
         while (QFC.hasMoreQuestions()) {
-            QFC.getNextQuestion();
+            QFC.getCurrentQuestion();
             QFC.answerQuestion(reader.readLine());
         }
         QFC.startCheckword();
