@@ -53,19 +53,19 @@ public class QuizDao {
 
         qs = "Wat is de hoofdstad van het Franse departement Vaucluse die we kennen uit een heel bekend liedje over een brug?";
         rl = 'A';
-        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<String>(Arrays.asList("Avignon"))));
+        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<QuestionAnswer>(Arrays.asList(new QuestionAnswer("Avignon", true)))));
 
         qs = "Welke band stond in 2008 in de hitparade met de song Viva La Vida?";
         rl = 'C';
-        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<String>(Arrays.asList("Coldplay"))));
+        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<QuestionAnswer>(Arrays.asList(new QuestionAnswer("Coldplay", true)))));
 
         qs = "Wat is de bijnaam van de Conservatieve Partij in Engeland?";
         rl = 'T';
-        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<String>(Arrays.asList("Tory", "Tories", "The Tories"))));
+        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<QuestionAnswer>(Arrays.asList(new QuestionAnswer("Tory", true), new QuestionAnswer("Tories", true), new QuestionAnswer("The Tories", true)))));
 
         qs = "Wat stad ligt in twee continenten?";
         rl = 'I';
-        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<String>(Arrays.asList("Instanboel", "Instanbul"))));
+        questions.add(new ShortAnswerQuestion(qs, rl, new ArrayList<QuestionAnswer>(Arrays.asList(new QuestionAnswer("Instanboel", true), new QuestionAnswer("Instanbul", true)))));
 
         int qid = 1425;
         int qp = 40;

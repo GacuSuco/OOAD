@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Checkword {
     private DictionaryContext dictionaryContext;
     private ArrayList<Character> earnedLetters;
-    private String givenCheckword = "";
+    private String givenCheckword;
 
     public Checkword() {
         this.givenCheckword = "";
