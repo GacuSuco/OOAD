@@ -14,6 +14,8 @@ public class GivenAnswer {
     public boolean isCorrectlyAnswered() {
         return this.question.isCorrectAnswer(this.answer);
     }
-
+    public char getRewardLetter(){
+        return question.getRewardLetter();
+    }
 
 }

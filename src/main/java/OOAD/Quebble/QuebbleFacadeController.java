@@ -1,57 +1,46 @@
 package OOAD.Quebble;
 
-import OOAD.Quebble.DAO.IQuizDao;
-import OOAD.Quebble.DAO.QuizDao;
 import OOAD.Quebble.Question.Question;
 
 import java.util.ArrayList;
 
 public class QuebbleFacadeController {
-    private IQuizDao quizDao = new QuizDao();
-    private Quiz quiz;
+    private QuizExecution quizExecution;
+    private Player player = new Player("rustige erick", 39);
 
-    public void startQuiz() {
+    public boolean startQuiz() {
+        // TODO: In een aparte laag zetten
         System.out.println("De quiz begint!");
 
-        String username = Player.getInstance().getUsername();
-        this.quiz = quizDao.getLeastPlayedQuizFromPLayer(username);
-
-        int quizprice = this.quiz.getQuizPrice();
-
-        if (Player.getInstance().hasSufficientBalance(quizprice)) {
-            Player.getInstance().substractBalance(quizprice);
-            this.quiz.setupQuiz();
-        }
+        quizExecution = new QuizExecution(this.player);
+        return quizExecution.startQuiz();
     }
 
     public boolean hasMoreQuestions() {
-        return this.quiz.hasMoreQuestions();
+        return this.quizExecution.hasMoreQuestions();
     }
 
     public void getCurrentQuestion() {
-        Question q = this.quiz.getCurrentQuestion();
-        System.out.println(q.toString());
+        Question question = this.quizExecution.getCurrentQuestion();
+
+        //TODO: In een aparte laag zetten
+        System.out.println(question.toString());
     }
 
     public void answerQuestion(String answer) {
-        this.quiz.answerQuestion(answer);
+        this.quizExecution.answerQuestion(answer);
     }
 
     public void startCheckword() {
-        ArrayList<Character> characters = this.quiz.startCheckword();
+        ArrayList<Character> characters = this.quizExecution.startCheckword();
         System.out.println("U speelt nu voor het Controlewoord, Uw verdiende letters zijn - " + characters);
     }
 
     public void answerCheckword(String answer) {
-        quiz.answerCheckword(answer);
+        quizExecution.answerCheckword(answer);
     }
 
     public void endQuiz() {
-        int score = this.quiz.calculateScore();
-        System.out.println("De quiz is gespeeld. Score:" + score);
-
-        String username = Player.getInstance().getUsername();
-        quizDao.UpdatePlayedQuizzes(username, quiz);
-
+        this.quizExecution.endQuiz();
     }
 }

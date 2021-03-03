@@ -1,26 +1,21 @@
 package OOAD.Quebble;
 
 public class Player {
-    private static Player instance = null;
     public String username;
     public int credit;
 
-    private Player() {
-    }
-
-    public static Player getInstance() {
-        if (instance == null) {
-            instance = new Player();
-        }
-        return instance;
+    public Player() { }
+    public Player(String username, int credit) {
+        this.username = username;
+        this.credit = credit;
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public boolean hasSufficientBalance(int givenBalance){
-        return credit > givenBalance;
+        return this.credit > givenBalance;
     }
 
     public void substractBalance(int givenBalance) {
@@ -28,6 +23,7 @@ public class Player {
     }
 
     public void login(String username, String password) {
+        //TODO: omzetten naar echte user.
         this.username = username;
         this.credit = 1000;
     }

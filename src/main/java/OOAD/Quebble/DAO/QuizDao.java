@@ -73,7 +73,7 @@ public class QuizDao implements IQuizDao {
         return new Quiz(1337, 40, questions);
     }
 
-    public void UpdatePlayedQuizzes(String username, Quiz playedQuiz) {
+    public void UpdatePlayedQuizzes(String username, Quiz playedQuiz, int score) {
         //TODO: Update naar db dat quiz gespeeld is.
     }
 }

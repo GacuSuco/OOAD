@@ -6,17 +6,19 @@ import java.io.InputStreamReader;
 
 public class main {
     public static void main(String[] args) throws IOException {
-        Player.getInstance().login("rustigeErick", "Welkom01");
+        //Player.getInstance().login("rustigeErick", "Welkom01");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         QuebbleFacadeController QFC = new QuebbleFacadeController();
-        QFC.startQuiz();
-        while (QFC.hasMoreQuestions()) {
-            QFC.getCurrentQuestion();
-            QFC.answerQuestion(reader.readLine());
+
+        if(QFC.startQuiz()){
+            while (QFC.hasMoreQuestions()) {
+                QFC.getCurrentQuestion();
+                QFC.answerQuestion(reader.readLine());
+            }
+            QFC.startCheckword();
+            QFC.answerCheckword(reader.readLine());
+            QFC.endQuiz();
         }
-        QFC.startCheckword();
-        QFC.answerCheckword(reader.readLine());
-        QFC.endQuiz();
+
     }
 }
