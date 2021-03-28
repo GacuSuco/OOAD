@@ -3,17 +3,17 @@ package OOAD.Quebble.Question;
 import java.util.ArrayList;
 
 public class ShortAnswerQuestion extends Question {
-    private ArrayList<QuestionAnswer> answers;
+    private ArrayList<QuestionAnswer> questionAnswers;
 
-    public ShortAnswerQuestion(String question, char rewardLetter, ArrayList<QuestionAnswer> answers) {
+    public ShortAnswerQuestion(String question, char rewardLetter, ArrayList<QuestionAnswer> questionAnswers) {
         super(question, rewardLetter);
-        this.answers = answers;
+        this.questionAnswers = questionAnswers;
     }
 
     @Override
     public boolean isCorrectAnswer(String givenAnswer) {
-        for (int i = 0; i < answers.size(); i++) {
-            if (givenAnswer.equals(answers.get(i).answer)) {
+        for (QuestionAnswer answer : questionAnswers) {
+            if (answer.getAnswer().equalsIgnoreCase(givenAnswer)) {
                 return true;
             }
         }

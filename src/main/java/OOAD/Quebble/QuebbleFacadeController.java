@@ -1,46 +1,44 @@
 package OOAD.Quebble;
 
+import OOAD.Quebble.DAO.Player.IPlayerDao;
+import OOAD.Quebble.DAO.Player.PlayerDAO;
 import OOAD.Quebble.Question.Question;
 
 import java.util.ArrayList;
 
 public class QuebbleFacadeController {
-    private QuizExecution quizExecution;
-    private Player player = new Player("rustige erick", 39);
+    private Userinterface userinterface = new Userinterface();
+    private IPlayerDao playerDAO = new PlayerDAO();
 
-    public boolean startQuiz() {
-        // TODO: In een aparte laag zetten
-        System.out.println("De quiz begint!");
-
-        quizExecution = new QuizExecution(this.player);
-        return quizExecution.startQuiz();
+    public int startQuiz(String username) {
+        userinterface.showIntroQuiz();
+        return playerDAO.getPlayer(username).startQuiz();
     }
 
-    public boolean hasMoreQuestions() {
-        return this.quizExecution.hasMoreQuestions();
+    public boolean hasMoreQuestions(String username, int quizid) {
+        return playerDAO.getPlayer(username).hasMoreQuestions(quizid);
     }
 
-    public void getCurrentQuestion() {
-        Question question = this.quizExecution.getCurrentQuestion();
-
-        //TODO: In een aparte laag zetten
-        System.out.println(question.toString());
+    public void getCurrentQuestion(String username, int quizid) {
+        Question question = playerDAO.getPlayer(username).getCurrentQuestion(quizid);
+        userinterface.showCurrentQuestion(question.toString());
     }
 
-    public void answerQuestion(String answer) {
-        this.quizExecution.answerQuestion(answer);
+    public void answerQuestion(String answer, String username, int quizid) {
+        playerDAO.getPlayer(username).answerQuestion(answer,quizid);
     }
 
-    public void startCheckword() {
-        ArrayList<Character> characters = this.quizExecution.startCheckword();
-        System.out.println("U speelt nu voor het Controlewoord, Uw verdiende letters zijn - " + characters);
+    public void startCheckword(String username, int quizid) {
+        ArrayList<Character> characters = playerDAO.getPlayer(username).startCheckword(quizid);
+        userinterface.showStartCheckword(characters);
     }
 
-    public void answerCheckword(String answer) {
-        quizExecution.answerCheckword(answer);
+    public void answerCheckword(String answer, String username, int quizid) {
+        playerDAO.getPlayer(username).answerCheckword(answer,quizid);
     }
 
-    public void endQuiz() {
-        this.quizExecution.endQuiz();
+    public void endQuiz(String username, int quizid) {
+        int score = playerDAO.getPlayer(username).endQuiz(quizid);
+        userinterface.showEndResults(score);
     }
 }
