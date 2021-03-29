@@ -3,27 +3,19 @@ package OOAD.Quebble.Checkword;
 import java.util.ArrayList;
 
 public class Checkword {
-    private DictionaryContext dictionaryContext;
+    private ICheckwordDictionary checkwordDictionary;
     private ArrayList<Character> earnedLetters;
     private String givenCheckword;
 
     public Checkword() {
         this.givenCheckword = "";
         this.earnedLetters = new ArrayList<>();
-        this.dictionaryContext = new DictionaryContext(new DefaultDictionary());
-    }
-
-    public void addEarnedLetter(char letter) {
-        this.earnedLetters.add(letter);
-    }
-
-    public ArrayList<Character> getEarnedLetters() {
-        return this.earnedLetters;
+        this.checkwordDictionary = new DefaultCheckwordDictionary();
     }
 
     public void validateCheckword(String givenCheckword) {
         if (this.hasValidLetters(givenCheckword)) {
-            if (dictionaryContext.getDictionary().validateWord(givenCheckword)) {
+            if (checkwordDictionary.validateWord(givenCheckword)) {
                 this.setGivenCheckword(givenCheckword);
             }
         }
@@ -45,10 +37,16 @@ public class Checkword {
         }
     }
 
+    public void addEarnedLetter(char letter) {
+        this.earnedLetters.add(letter);
+    }
+    public ArrayList<Character> getEarnedLetters() {
+        return this.earnedLetters;
+    }
+
     public void setGivenCheckword(String givenCheckword) {
         this.givenCheckword = givenCheckword;
     }
-
     public String getGivenCheckword() {
         return givenCheckword;
     }

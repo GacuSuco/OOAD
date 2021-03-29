@@ -7,10 +7,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DefaultDictionary implements IDictionary {
+public class DefaultCheckwordDictionary implements ICheckwordDictionary {
     private ArrayList<String> dictionary;
 
-    public DefaultDictionary() {
+    public DefaultCheckwordDictionary() {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource("wordlist.txt");
         this.dictionary = new ArrayList<String>();

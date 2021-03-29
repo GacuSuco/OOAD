@@ -1,5 +1,5 @@
 package OOAD.Quebble.Checkword;
 
-public interface IDictionary {
+public interface ICheckwordDictionary {
     boolean validateWord(String word);
 }

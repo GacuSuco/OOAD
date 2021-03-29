@@ -1,14 +1,16 @@
 package OOAD.Quebble;
 
+import OOAD.Quebble.Question.Question;
+
 import java.util.ArrayList;
 
-public class Userinterface {
+public class UserInterface {
     public void showIntroQuiz(){
         System.out.println("De quiz gaat beginnen.");
     }
 
-    public void showCurrentQuestion(String question){
-        System.out.println(question);
+    public void showCurrentQuestion(Question question){
+        System.out.println(question.toString());
     }
 
     public void showStartCheckword(ArrayList<Character> characters){

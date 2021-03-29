@@ -34,9 +34,6 @@ public class Player {
     public void substractBalance(int givenBalance) {
         this.credit -= givenBalance;
     }
-    public boolean hasSufficientBalance(int givenBalance){
-        return this.credit > givenBalance;
-    }
 
     public int startQuiz(){
         int quizid = 0;
@@ -56,13 +53,13 @@ public class Player {
     public Question getCurrentQuestion(int quizid) {
         return getQuizExecution(quizid).getCurrentQuestion();
     }
-    public void answerQuestion(String answer, int quizid) {
+    public void answerQuestion(int quizid, String answer) {
         getQuizExecution(quizid).answerQuestion(answer);
     }
     public ArrayList<Character> startCheckword(int quizid) {
         return getQuizExecution(quizid).startCheckword();
     }
-    public void answerCheckword(String answer, int quizid) {
+    public void answerCheckword(int quizid, String answer) {
         getQuizExecution(quizid).answerCheckword(answer);
     }
     public int endQuiz(int quizid) {

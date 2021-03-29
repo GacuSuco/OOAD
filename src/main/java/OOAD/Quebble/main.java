@@ -14,10 +14,10 @@ public class main {
         if(quizid != 0){
             while (QFC.hasMoreQuestions(username, quizid)) {
                 QFC.getCurrentQuestion(username, quizid);
-                QFC.answerQuestion(reader.readLine(), username, quizid);
+                QFC.answerQuestion(username, quizid, reader.readLine());
             }
             QFC.startCheckword(username, quizid);
-            QFC.answerCheckword(reader.readLine(), username, quizid);
+            QFC.answerCheckword(username, quizid, reader.readLine());
             QFC.endQuiz(username, quizid);
         }
     }

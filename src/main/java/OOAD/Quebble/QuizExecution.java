@@ -24,6 +24,7 @@ public class QuizExecution {
         this.questionIndex = 0;
         this.totalCorrectlyAnswered = 0;
         this.givenAnswers = new ArrayList<>();
+
         this.scoreCalculator = new ScoreCalculator();
         this.scoreCalculator.setScoreCalculatorStrategy(new DefaultScoreCalculatorStrategy());
     }
@@ -36,6 +37,12 @@ public class QuizExecution {
     }
     public Question getQuestion(int index) {
         return this.quiz.getQuestion(index);
+    }
+    public int getTotalCorrectlyAnswered() {
+        return totalCorrectlyAnswered;
+    }
+    public long getTimestamp() {
+        return timestamp;
     }
 
     public int startQuiz(String username) {
@@ -77,6 +84,6 @@ public class QuizExecution {
     }
 
     private int calculateScore() {
-        return this.scoreCalculator.calculateScore(this.totalCorrectlyAnswered, this.timestamp, this.checkword.getGivenCheckword());
+        return this.scoreCalculator.calculateScore(getTotalCorrectlyAnswered(), getTimestamp(), this.checkword.getGivenCheckword());
     }
 }
